@@ -55,6 +55,7 @@ body {
    position: absolute;
    right: -1px;
    top: -2px;
+   width: 170px;
 }
 
 .bottom-right-img {
@@ -164,6 +165,11 @@ body {
 }
 }
 
+@media screen and (max-width: 736px) {
+   .section .img1 img{
+      width: 60%;
+   }
+}
 @media screen and (max-width: 600px) {
     .top-right-img img{
         width: 160px;
