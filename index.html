@@ -10,13 +10,13 @@
     <div class="wrapper">
         <div class="content">
             <div class="wrapper-flex">
-                <div class="left-img"><img src="assets/images/left.png" alt=""></div>
-                <div class="center-img"><img src="assets/images/center-img.png" alt=""></div>
-                <div class="top-right-img"><img src="assets/images/right-top.png" alt=""></div>
-                <div class="bottom-right-img"><img src="assets/images/right-bootom.png" alt=""></div>
+                <div class="left-img"><img src="assets/images/left.png" alt="Left Image"></div>
+                <div class="center-img"><img src="assets/images/center-img.png" alt="Center Image"></div>
+                <div class="top-right-img"><img src="assets/images/right-top.png" alt="Top Right Image"></div>
+                <div class="bottom-right-img"><img src="assets/images/right-bootom.png" alt="Bottom Right Image"></div>
             </div>
             <div class="section">
-                <div class="img1"><img src="assets/images/img1.png" alt=""></div>
+                <div class="img1"><img src="assets/images/img1.png" alt="Main Image"></div>
                 <div class="content-right">
                     <div class="heading">Cloud Shapers</div>
                     <p>Imagine the future, then build it</p>
@@ -25,5 +25,51 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Prevent scrolling and zooming
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Prevent double-tap zoom
+        let lastTap = 0;
+        document.addEventListener('touchstart', function(e) {
+            const now = new Date().getTime();
+            if (now - lastTap <= 300) {
+                e.preventDefault();
+            }
+            lastTap = now;
+        });
+
+        // Adjust layout on orientation change
+        function adjustLayout() {
+            // Ensure full viewport height
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+            // Recalculate layout for landscape and portrait
+            const isLandscape = window.orientation === 90 || window.orientation === -90;
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                if (isLandscape) {
+                    section.style.flexDirection = 'row';
+                } else {
+                    section.style.flexDirection = 'column';
+                }
+            });
+
+            // Ensure contact button is always visible
+            const contactButton = document.querySelector('.contact-button');
+            if (contactButton) {
+                contactButton.style.display = 'block';
+            }
+        }
+
+        // Run on load and orientation change
+        window.addEventListener('load', adjustLayout);
+        window.addEventListener('orientationchange', adjustLayout);
+        window.addEventListener('resize', adjustLayout);
+    </script>
 </body>
 </html>

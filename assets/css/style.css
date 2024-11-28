@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 * {
    margin: 0;
    padding: 0;
@@ -7,35 +5,44 @@
 }
 
 html, body {
-   overflow-y: hidden;
+   overflow: hidden;
    position: relative;
    width: 100%;
-   min-height: 100vh;
+   height: 100vh;
+   max-height: 100vh;
 }
 
 body {
    background-color: #45c3eb;
    font-family: "Cabin", sans-serif;
+   overscroll-behavior: none;
 }
 
 .wrapper {
    position: relative;
-   min-height: 100vh;
    width: 100%;
+   height: 100vh;
    display: flex;
    justify-content: center;
+   align-items: center;
+   overflow: hidden;
 }
+
 .wrapper .content {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .wrapper-flex {
    position: fixed;
    width: 100%;
-   top: 0px;
+   top: 0;
+   left: 0;
+   z-index: 1;
 }
 
 .left-img img,
@@ -45,6 +52,7 @@ body {
 .section .img1 img {
    max-width: 100%;
    height: auto;
+   object-fit: contain;
 }
 
 .left-img img {
@@ -58,12 +66,7 @@ body {
    width: 170px;
 }
 
-.bottom-right-img {
-   position: static;
-}
-
 .bottom-right-img img {
-   display: block;
    position: fixed;
    bottom: 0;
    right: -1px;
@@ -76,8 +79,9 @@ body {
    gap: 60px;
    padding: 20px;
    position: relative;
-   z-index: 1;
-   /* margin-bottom: 200px; */
+   z-index: 2;
+   width: 100%;
+   max-width: 1200px;
 }
 
 .section .heading {
@@ -90,9 +94,10 @@ body {
 .section p {
    font-size: 16px;
    color: rgba(31.76535, 88.57424999999999, 104.7183, 1);
+   margin: 10px 0;
 }
 
-.content-right{
+.content-right {
     min-width: 320px;
     text-align: center;
 }
@@ -104,6 +109,9 @@ body {
    border-radius: 8px;
    margin-top: 30px;
    width: 100%;
+   /* max-width: 250px; */
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .section .contact-button a {
@@ -122,30 +130,20 @@ body {
 .wrapper-flex .center-img img {
    position: absolute;
    top: 50px;
-}
-
-@media screen and (min-width: 1920px) {
-   .wrapper-flex {
-       max-width: 1920px;
-       margin: 0 auto;
-   }
-   
+   max-width: 80%;
 }
 
 @media screen and (max-width: 1365px) {
    .section {
        gap: 40px;
    }
-   
 }
-
 
 @media screen and (max-width: 767px) {
     .section {
-        /* flex-direction: column; */
+        flex-direction: column;
         text-align: center;
-        /* margin-bottom: 250px; */
-        padding: 20px;
+        gap: 20px;
     }
 
    .section .heading {
@@ -161,17 +159,18 @@ body {
    }
 
    .section .contact-button {
-    margin: 20px auto;
-}
+       margin: 20px auto;
+   }
 }
 
 @media screen and (max-width: 736px) {
-   .section .img1 img{
+   .section .img1 img {
       width: 60%;
    }
 }
+
 @media screen and (max-width: 600px) {
-    .top-right-img img{
+    .top-right-img img {
         width: 160px;
     }
 }
@@ -202,5 +201,30 @@ body {
    .section .contact-button {
        width: 100%;
    }
-   
+}
+
+/* Landscape mode fixes */
+@media screen and (orientation: landscape) {
+    body, .wrapper, .wrapper .content {
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+
+    .section {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .section .img1 img {
+        max-height: 50vh;
+        width: auto;
+    }
+
+    .wrapper-flex .center-img img {
+        top: 20px;
+        max-height: 30vh;
+    }
 }
