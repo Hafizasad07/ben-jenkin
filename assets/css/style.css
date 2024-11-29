@@ -67,9 +67,12 @@ body {
 }
 
 .bottom-right-img img {
-   position: fixed;
-   bottom: 0;
-   right: -1px;
+    position: fixed; 
+    bottom: 0; 
+    right: 0; 
+    max-width: 100%; 
+    height: auto; 
+    z-index: 10;
 }
 
 .section {
@@ -132,6 +135,27 @@ body {
    top: 50px;
    max-width: 80%;
 }
+
+@media screen and (min-width: 1400px) {
+    .content-right,
+    .section .img1 img {
+        width: 500px !important;
+    }
+
+    .section{
+        gap: 80px !important;
+    }
+
+    .section p{
+        font-size: 18px;
+    }
+
+    .section .heading{
+        font-size: 45px;
+    }
+
+}
+
 
 @media screen and (max-width: 1365px) {
    .section {
@@ -226,5 +250,11 @@ body {
     .wrapper-flex .center-img img {
         top: 20px;
         max-height: 30vh;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .bottom-right-img img {
+        bottom: env(safe-area-inset-bottom, 0); 
     }
 }

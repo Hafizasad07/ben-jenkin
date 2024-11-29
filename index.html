@@ -27,12 +27,10 @@
     </div>
 
     <script>
-        // Prevent scrolling and zooming
         document.addEventListener('touchmove', function(e) {
             e.preventDefault();
         }, { passive: false });
 
-        // Prevent double-tap zoom
         let lastTap = 0;
         document.addEventListener('touchstart', function(e) {
             const now = new Date().getTime();
@@ -42,13 +40,9 @@
             lastTap = now;
         });
 
-        // Adjust layout on orientation change
         function adjustLayout() {
-            // Ensure full viewport height
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-            // Recalculate layout for landscape and portrait
             const isLandscape = window.orientation === 90 || window.orientation === -90;
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -59,14 +53,12 @@
                 }
             });
 
-            // Ensure contact button is always visible
             const contactButton = document.querySelector('.contact-button');
             if (contactButton) {
                 contactButton.style.display = 'block';
             }
         }
 
-        // Run on load and orientation change
         window.addEventListener('load', adjustLayout);
         window.addEventListener('orientationchange', adjustLayout);
         window.addEventListener('resize', adjustLayout);
