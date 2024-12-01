@@ -139,6 +139,10 @@ body {
 }
 
 @media screen and (min-width: 1400px) {
+
+    .section .contact-button{
+        width: 80%;
+    }
     .content-right,
     .section .img1 img {
         width: 500px !important;
